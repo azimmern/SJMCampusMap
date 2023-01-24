@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin="">
+    </script>
+
+    <title>St. Joe Mish Campus Map</title>
+</head>
+
+<body>
+    <h1>St. Joe Mish Campus Camp</h1>
+
+    <div id="map">
+        <script>
+            var map = L.map('map').setView([41.65998255126387, -86.1822854294810], 18);
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 21,
+                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            }).addTo(map);
+
+            var churchMarker = L.marker([41.65977169766156, -86.18230015486311]).addTo(map);
+            var schoolMarker = L.marker([41.65964134199628, -86.1828954482212]).addTo(map);
+            var gymMarker = L.marker([41.65988775792632, -86.18279008660997]).addTo(map);
+            var rectoryMarker = L.marker([41.65934016569017, -86.18232283076875]).addTo(map);
+            var officeMarker = L.marker([41.65940276645013, -86.18295371466695]).addTo(map);
+            var parishSquarePolygon = L.polygon([
+                [41.66007643293494, -86.18327367345883],
+                [41.660084582083144, -86.18204110493102],
+                [41.65914470685729, -86.18204110493102],
+                [41.659133841167524, -86.18326640166809]
+            ]).addTo(map);
+            var rosarygardenPolygon = L.polygon([
+                [41.65950967818377, -86.18285591576287],
+                [41.65950466843005, -86.18256623718732],
+                [41.65931930739323, -86.18258098933708],
+                [41.65931930739323, -86.18283714030123]
+            ]).addTo(map);
+            
+            //var parkingPolygon
+
+            churchMarker.bindPopup("<b>Saint Joseph Catholic Church</b>");
+            schoolMarker.bindPopup("<b>Mishawaka Catholic School - Saint Joseph Campus</b>");
+            gymMarker.bindPopup("<b>Mishawaka Catholic Gymnasium</b>");
+            rectoryMarker.bindPopup("<b>Rectory</b>");
+            officeMarker.bindPopup("<b>Parish Office</b>");
+            parishSquarePolygon.bindPopup("<b>St. Joseph Parish Square - National Register of Historic Places</b>")
+            rosarygardenPolygon.bindPopup("<b>Rosary Garden</b>");
+        </script>
+
+    </div>
+
+</body>
